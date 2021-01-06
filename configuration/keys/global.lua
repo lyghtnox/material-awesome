@@ -376,9 +376,9 @@ local globalKeys =
       -- Open main menu if no default app
       local app = awful.screen.focused().selected_tag.defaultApp
       if app == '' then
-	_G.screen.primary.left_panel:toggle(true)
+		_G.screen.primary.left_panel:toggle('rofi')
       else
-	awful.spawn(
+		awful.spawn(
           app,
           {
             tag = _G.mouse.screen.selected_tag,
