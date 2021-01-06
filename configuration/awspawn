@@ -11,17 +11,16 @@
 # is intended to be a copy of this file
 # to allow out of tree autostart programs
 APPS=(
-    keepassxc
     kdeconnect-indicator
     radeon-profile
     $HOME/.config/awesomestart
     )
 
 # Some applications start child applications that need to be killed on reload
-KILL=(
-    synergyc
-    nextcloud
-    )
+#KILL=(
+#    synergyc
+#    nextcloud
+#    )
 
 # First kill lingering apps
 for app in "${APPS[@]}"

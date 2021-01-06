@@ -16,11 +16,11 @@ local globalKeys =
   awful.key({modkey}, 's', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
   awful.key({altkey, 'Control'}, 'Up', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
   awful.key({altkey, 'Control'}, 'Down', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
-  awful.key({modkey}, 'Escape', awful.tag.history.restore, {description = 'go back', group = 'tag'}),
+  awful.key({modkey}, 'Tab', awful.tag.history.restore, {description = 'go back', group = 'tag'}),
   -- Default client focus
   awful.key(
     {modkey},
-    'd',
+    'Right',
     function()
       awful.client.focus.byidx(1)
     end,
@@ -28,7 +28,7 @@ local globalKeys =
   ),
   awful.key(
     {modkey},
-    'a',
+    'Left',
     function()
       awful.client.focus.byidx(-1)
     end,
@@ -38,17 +38,33 @@ local globalKeys =
     {modkey},
     'r',
     function()
-      _G.screen.primary.left_panel:toggle(true)
+      _G.screen.primary.left_panel:toggle('ssh')
     end,
-    {description = 'show main menu', group = 'awesome'}
+    {description = 'show ssh menu', group = 'awesome'}
+  ),
+  awful.key(
+    {modkey},
+    'd',
+    function()
+      _G.screen.primary.left_panel:toggle('rofi')
+    end,
+    {description = 'show rofi', group = 'awesome'}
   ),
   awful.key(
     {altkey},
     'space',
     function()
-      _G.screen.primary.left_panel:toggle(true)
+      _G.screen.primary.left_panel:toggle()
     end,
     {description = 'show main menu', group = 'awesome'}
+  ),
+  awful.key(
+    {modkey},
+    'x',
+    function()
+      _G.exit_screen_show()
+    end,
+    {description = 'show exit screen', group = 'awesome'}
   ),
   awful.key({modkey}, 'u', awful.client.urgent.jumpto, {description = 'jump to urgent client', group = 'client'}),
   awful.key(
@@ -80,7 +96,7 @@ local globalKeys =
     {modkey},
     'l',
     function()
-      awful.spawn(apps.default.lock)
+      awful.spawn.with_shell(apps.default.lock)
     end,
     {description = 'Lock the screen', group = 'awesome'}
   ),
@@ -129,18 +145,27 @@ local globalKeys =
     {modkey},
     'p',
     function()
-      awful.util.spawn_with_shell('brave-browser')
+      awful.util.spawn_with_shell('firefox --private-window')
     end,
-    {description = 'Open Brave', group = 'launcher'}
+    {description = 'Open private browser', group = 'launcher'}
   ),
-  -- Standard program
+  -- Open terminal
   awful.key(
     {modkey},
-    'x',
+    'Return',
     function()
       awful.util.spawn_with_shell(apps.default.terminal)
     end,
     {description = 'open a terminal', group = 'launcher'}
+  ),
+  -- Open mail client
+  awful.key(
+    {modkey},
+    'm',
+    function()
+      awful.util.spawn_with_shell(apps.default.mail)
+    end,
+    {description = 'open mail client', group = 'launcher'}
   ),
   awful.key({modkey, 'Control'}, 'r', _G.awesome.restart, {description = 'reload awesome', group = 'awesome'}),
   awful.key({modkey, 'Control'}, 'q', _G.awesome.quit, {description = 'quit awesome', group = 'awesome'}),
@@ -223,6 +248,17 @@ local globalKeys =
       awful.layout.inc(-1)
     end,
     {description = 'select previous', group = 'layout'}
+  ),
+  awful.key(
+    {modkey},
+    'n',
+    function()
+      local c = _G.client.focus
+      if c then
+	c.minimized = true
+      end
+    end,
+    {description = 'minimize client', group = 'client'}
   ),
   awful.key(
     {modkey, 'Control'},
@@ -325,14 +361,6 @@ local globalKeys =
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   ),
-  awful.key(
-    {},
-    'XF86PowerOff',
-    function()
-      _G.exit_screen_show()
-    end,
-    {description = 'toggle mute', group = 'hotkeys'}
-  ),
   -- Screen management
   awful.key(
     {modkey},
@@ -345,13 +373,19 @@ local globalKeys =
     {modkey},
     't',
     function()
-      awful.spawn(
-          awful.screen.focused().selected_tag.defaultApp,
+      -- Open main menu if no default app
+      local app = awful.screen.focused().selected_tag.defaultApp
+      if app == '' then
+	_G.screen.primary.left_panel:toggle(true)
+      else
+	awful.spawn(
+          app,
           {
             tag = _G.mouse.screen.selected_tag,
             placement = awful.placement.bottom_right
           }
         )
+      end
     end,
     {description = 'open default program for tag/workspace', group = 'tag'}
   ),

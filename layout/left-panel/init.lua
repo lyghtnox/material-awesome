@@ -53,14 +53,29 @@ local left_panel = function(screen)
     )
   end
 
-  local openPanel = function(should_run_rofi)
+  function panel:run_ssh()
+    _G.awesome.spawn(
+      apps.default.ssh,
+      false,
+      false,
+      false,
+      false,
+      function()
+        panel:toggle()
+      end
+    )
+  end
+
+  local openPanel = function(to_run)
     panel.width = action_bar_width + panel_content_width
     backdrop.visible = true
     panel.visible = false
     panel.visible = true
     panel:get_children_by_id('panel_content')[1].visible = true
-    if should_run_rofi then
+    if to_run == 'rofi' then
       panel:run_rofi()
+  	elseif to_run == 'ssh' then
+	  panel:run_ssh()
     end
     panel:emit_signal('opened')
   end
@@ -72,10 +87,10 @@ local left_panel = function(screen)
     panel:emit_signal('closed')
   end
 
-  function panel:toggle(should_run_rofi)
+  function panel:toggle(to_run)
     self.opened = not self.opened
     if self.opened then
-      openPanel(should_run_rofi)
+      openPanel(to_run)
     else
       closePanel()
     end
