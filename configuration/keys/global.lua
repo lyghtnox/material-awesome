@@ -325,7 +325,7 @@ local globalKeys =
     {},
     'XF86AudioRaiseVolume',
     function()
-      awful.spawn('amixer -D pulse sset Master 5%+')
+      awful.spawn('amixer sset Master 5%+')
     end,
     {description = 'volume up', group = 'hotkeys'}
   ),
@@ -333,7 +333,7 @@ local globalKeys =
     {},
     'XF86AudioLowerVolume',
     function()
-      awful.spawn('amixer -D pulse sset Master 5%-')
+      awful.spawn('amixer sset Master 5%-')
     end,
     {description = 'volume down', group = 'hotkeys'}
   ),
@@ -341,7 +341,7 @@ local globalKeys =
     {},
     'XF86AudioMute',
     function()
-      awful.spawn('amixer -D pulse set Master 1+ toggle')
+      awful.spawn('amixer set Master 1+ toggle')
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   ),
@@ -349,17 +349,25 @@ local globalKeys =
     {},
     'XF86AudioNext',
     function()
-      --
+			awful.spawn('playerctl next')
     end,
-    {description = 'toggle mute', group = 'hotkeys'}
+    {description = 'next media', group = 'hotkeys'}
   ),
   awful.key(
     {},
-    'XF86PowerDown',
+    'XF86AudioPlay',
     function()
-      --
+			awful.spawn('playerctl play-pause')
     end,
-    {description = 'toggle mute', group = 'hotkeys'}
+    {description = 'play/pause media', group = 'hotkeys'}
+  ),
+  awful.key(
+    {},
+    'XF86AudioPrev',
+    function()
+			awful.spawn('playerctl previous')
+    end,
+    {description = 'previous media', group = 'hotkeys'}
   ),
   -- Screen management
   awful.key(
