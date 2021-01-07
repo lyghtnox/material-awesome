@@ -68,7 +68,7 @@ local left_panel = function(screen)
 
   local openPanel = function(to_run)
     panel.width = action_bar_width + panel_content_width
-    backdrop.visible = true
+    backdrop.visible = false
     panel.visible = false
     panel.visible = true
     panel:get_children_by_id('panel_content')[1].visible = true
