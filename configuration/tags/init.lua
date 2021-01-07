@@ -23,9 +23,9 @@ local tags = {
     screen = 1
   },
   {
-    icon = icons.game,
-    type = 'game',
-    defaultApp = apps.default.game,
+    icon = icons.media,
+    type = 'media',
+    defaultApp = apps.default.media,
     screen = 1
   },
   {

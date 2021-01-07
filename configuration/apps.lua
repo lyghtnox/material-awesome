@@ -9,7 +9,7 @@ return {
   default = {
     terminal = 'kitty tmux',
     rofi = 'env /usr/bin/rofi -dpi ' .. get_dpi() .. ' -width ' .. with_dpi(400) .. ' -show drun -theme ' .. filesystem.get_configuration_dir() .. '/configuration/rofi.rasi -run-command "/bin/bash -c -i \'shopt -s expand_aliases; {cmd}\'"',
-		ssh = 'env /usr/bin/rofi -dpi ' .. get_dpi() .. ' -width ' .. with_dpi(400) .. ' -show ssh -theme ' .. filesystem.get_configuration_dir() .. '/configuration/rofi.rasi -terminal kitty',
+    ssh = 'env /usr/bin/rofi -dpi ' .. get_dpi() .. ' -width ' .. with_dpi(400) .. ' -show ssh -theme ' .. filesystem.get_configuration_dir() .. '/configuration/rofi.rasi -ssh-command "kitty -- kitty +kitten ssh {host}"',
     lock = 'i3lock-fancy && sleep 1 && xset dpms force off', -- Turn off screen
     quake = 'alacritty',
     mail = 'birdtray -t',
@@ -22,7 +22,7 @@ return {
     browser = 'firefox',
     editor = 'cherrytree', -- gui text editor
     social = 'discord',
-    game = '',
+    media = 'kodi',
     vm = '',
     files = 'dolphin',
     music = 'spotify'
