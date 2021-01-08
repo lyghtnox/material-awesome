@@ -35,7 +35,7 @@ return {
     --'xfce4-power-manager', -- Power manager
     'ibus-daemon --xim --daemonize', -- Ibus daemon for keyboard
     --'scream-start', -- scream audio sink
-	'pasystray', -- Pulseaudio systray
+	--'pasystray', -- Pulseaudio systray
     'numlockx on', -- enable numlock
     --'/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
     --'/usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager

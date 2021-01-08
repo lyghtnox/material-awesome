@@ -154,7 +154,7 @@ local globalKeys =
     {modkey},
     'Return',
     function()
-      awful.util.spawn_with_shell(apps.default.terminal)
+      awful.util.spawn(apps.default.terminal)
     end,
     {description = 'open a terminal', group = 'launcher'}
   ),
@@ -163,7 +163,7 @@ local globalKeys =
     {modkey},
     'm',
     function()
-      awful.util.spawn_with_shell(apps.default.mail)
+      awful.util.spawn(apps.default.mail)
     end,
     {description = 'open mail client', group = 'launcher'}
   ),
