@@ -22,17 +22,33 @@ local globalKeys =
     {modkey},
     'Right',
     function()
-      awful.client.focus.byidx(1)
+      awful.client.focus.bydirection('right')
     end,
-    {description = 'focus next by index', group = 'client'}
+    {description = 'move focus to the right', group = 'client'}
   ),
   awful.key(
     {modkey},
     'Left',
     function()
-      awful.client.focus.byidx(-1)
+      awful.client.focus.bydirection('left')
     end,
-    {description = 'focus previous by index', group = 'client'}
+    {description = 'move focus to the left', group = 'client'}
+  ),
+  awful.key(
+    {modkey},
+    'Up',
+    function()
+      awful.client.focus.bydirection('up')
+    end,
+    {description = 'move focus up', group = 'client'}
+  ),
+  awful.key(
+    {modkey},
+    'Down',
+    function()
+      awful.client.focus.bydirection('down')
+    end,
+    {description = 'move focus down', group = 'client'}
   ),
   awful.key(
     {modkey},
