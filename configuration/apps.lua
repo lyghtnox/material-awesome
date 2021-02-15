@@ -10,7 +10,7 @@ return {
     terminal = 'kitty tmux',
     rofi = 'env /usr/bin/rofi -dpi ' .. get_dpi() .. ' -width ' .. with_dpi(400) .. ' -show drun -theme ' .. filesystem.get_configuration_dir() .. '/configuration/rofi.rasi -run-command "/bin/bash -c -i \'shopt -s expand_aliases; {cmd}\'"',
     ssh = 'env /usr/bin/rofi -dpi ' .. get_dpi() .. ' -width ' .. with_dpi(400) .. ' -show ssh -theme ' .. filesystem.get_configuration_dir() .. '/configuration/rofi.rasi -ssh-command "kitty -- kitty +kitten ssh {host}"',
-    lock = 'i3lock-fancy && sleep 1 && xset dpms force off', -- Turn off screen
+    lock = 'i3lock-fancy',
     quake = 'alacritty',
     mail = 'birdtray -t',
     screenshot = '~/.config/awesome/configuration/utils/screenshot -m',
@@ -21,7 +21,7 @@ return {
     -- associated with each tag/workspace
     browser = 'firefox',
     editor = 'cherrytree', -- gui text editor
-    social = 'discord',
+    social = 'signal',
     media = 'kodi',
     vm = '',
     files = 'dolphin',
@@ -42,6 +42,7 @@ return {
     --'blueman-tray', -- bluetooth tray
     'birdtray', -- Email client
     'udiskie -s', -- Automount
+	'discord --start-minimized', -- Discord
     -- Add applications that need to be killed between reloads
     -- to avoid multipled instances, inside the awspawn script
     '~/.config/awesome/configuration/awspawn' -- Spawn "dirty" apps that can linger between sessions
