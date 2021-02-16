@@ -21,7 +21,7 @@ return {
     -- associated with each tag/workspace
     browser = 'firefox',
     editor = 'cherrytree', -- gui text editor
-    social = 'signal',
+    social = 'signal-desktop',
     media = 'kodi',
     vm = '',
     files = 'dolphin',
