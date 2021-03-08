@@ -22,7 +22,7 @@ return {
     browser = 'firefox',
     editor = 'cherrytree', -- gui text editor
     social = 'signal-desktop',
-    media = 'kodi',
+	game = 'lutris',
     vm = '',
     files = 'dolphin',
     music = 'spotify'
