@@ -23,7 +23,7 @@ return {
     editor = 'cherrytree', -- gui text editor
     social = 'signal-desktop',
 	game = 'lutris',
-    vm = '',
+    vm = 'virt-manager',
     files = 'dolphin',
     music = 'spotify'
   },
