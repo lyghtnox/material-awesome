@@ -37,7 +37,7 @@ return {
     --'scream-start', -- scream audio sink
 	--'pasystray', -- Pulseaudio systray
     'numlockx on', -- enable numlock
-    --'/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
+    '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
     --'/usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
     --'blueman-tray', -- bluetooth tray
     'birdtray', -- Email client
